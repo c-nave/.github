@@ -1,0 +1,62 @@
+name: 🔧 작업
+description: 리팩토링, 문서, 빌드·설정, 조사 등 버그도 기능도 아닌 작업
+labels: ["type: chore", "P2: normal"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 작업 종류
+      options:
+        - 리팩토링
+        - 문서
+        - 빌드 / 의존성
+        - CI / 배포
+        - 테스트 보강
+        - 조사 / 기술 검토
+        - 기타
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: 무엇을
+      placeholder: 설정 로딩 로직이 3개 모듈에 중복돼 있어 공통 모듈로 추출
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: 왜
+      description: 지금 해야 하는 이유. "언젠가 해야 해서" 는 P3 입니다.
+      placeholder: |
+        설정 항목을 추가할 때마다 3곳을 고쳐야 하고, 실제로 지난 릴리스에서 한 곳을 빠뜨려 버그가 났음.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 작업 범위
+      description: 건드릴 파일·모듈과, 명시적으로 건드리지 않을 것을 적어주세요.
+      placeholder: |
+        포함: src/config/, src/api/settings.py, src/worker/settings.py
+        제외: 설정 파일 포맷 자체는 바꾸지 않음 (별도 이슈)
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건
+      placeholder: |
+        - [ ] 설정 로딩이 core/config 한 곳에서만 일어난다
+        - [ ] 기존 테스트가 모두 통과한다
+        - [ ] 동작 변화 없음 (리그레션 테스트 통과)
+    validations:
+      required: true
+
+  - type: textarea
+    id: risk
+    attributes:
+      label: 리스크 / 영향 범위
+      description: 되돌리기 어려운 변경, 배포 순서 의존성, 마이그레이션 필요 여부 등

@@ -1,0 +1,86 @@
+name: 🐞 버그 리포트
+description: 의도한 대로 동작하지 않는 문제를 보고합니다
+labels: ["type: bug", "P2: normal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        재현 절차 · 기대/실제 동작 · 환경 세 가지가 있어야 고칠 수 있습니다.
+        로그는 스크린샷 대신 **텍스트로** 붙여 넣어 주세요. 검색이 됩니다.
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 절차
+      description: 번호를 매겨 구체적으로 적어주세요. 값도 함께 적으면 좋습니다.
+      placeholder: |
+        1. 조회 화면에서 기간을 1년으로 설정
+        2. 조회 (결과 6,412건)
+        3. [CSV 내보내기] 클릭
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 동작
+      placeholder: CSV 파일이 다운로드된다
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 동작
+      description: "\"잘못 나옴\" 이 아니라 무엇이 어떻게 나왔는지 적어주세요."
+      placeholder: 30초 후 "요청 시간이 초과되었습니다" 토스트가 뜨고 파일이 생기지 않음
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 버전
+      description: 앱 버전 또는 커밋 해시
+      placeholder: v1.4.2
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 환경
+      placeholder: |
+        OS: Windows 11 23H2
+        브라우저/런타임: Chrome 126 / Python 3.12 / JDK 21
+        접속 경로: 사내망 VPN
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 로그 / 에러 메시지
+      description: 관련 로그를 붙여주세요. 자동으로 코드 블록으로 표시됩니다.
+      render: shell
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: 추가 정보
+      description: 스크린샷, 발생 빈도(항상/가끔), 최근 언제부터 발생했는지, 우회 방법 등
+
+  - type: input
+    id: frequency
+    attributes:
+      label: 발생 빈도
+      placeholder: 항상 / 5회 중 1회 / 특정 데이터에서만
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 확인
+      options:
+        - label: 같은 내용의 기존 이슈가 없는지 검색했습니다
+          required: true
+        - label: 최신 버전에서도 재현되는지 확인했습니다

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 개발 컨벤션 문서
+    url: https://github.com/c-nave/.github/blob/main/README.md
+    about: 브랜치 전략, 커밋 컨벤션, PR·이슈 가이드
+  - name: 💬 질문 · 논의
+    url: https://github.com/c-nave/.github/discussions
+    about: 버그도 기능 요청도 아닌 질문은 여기에 남겨주세요
